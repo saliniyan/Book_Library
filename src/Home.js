@@ -7,6 +7,7 @@ function Home(){
     const [books,setBooks]=useState([])
     const [offset,setOffset]=useState(0)
     const [search,setSearch]=useState('Marvel')
+    const [item,setItem]=useState([])
 
     const fetchbook=async(e)=>
     {
@@ -28,17 +29,24 @@ function Home(){
         setOffset(0);
     }
 
+    const seecart=()=>
+    {
+
+    }
+
     return(
         <div>
-        <h1>Book Library App</h1>
         <form onSubmit={fetchbook}>
-        <div>
+        <div className="first">
+            <div>
             <input className="searchbox"
                 type="text"
                 onChange={handlesearch}
                 placeholder="Search here..."
             />
             <button type="submit" className="searchbutton">Search</button>
+            </div>
+            <img src={"/cart.png"} alt="cart" className="cartimg" onClick={seecart}/>
         </div>
         </form>
         <div className='book'>
@@ -57,7 +65,7 @@ function Home(){
             ))
             }
         </div>
-        <button onClick={fetchbook} className="button">Load Books</button>
+        <button onClick={fetchbook} className="button1">Load Books</button>
         </div>
     )
 }
