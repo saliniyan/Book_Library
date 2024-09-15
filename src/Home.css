@@ -16,6 +16,7 @@ body{
 
 .booklist
 {
+  border-radius: 8px;
   background-color:rgb(252, 237, 210);
   width:25%;
   flex-basis: 20%;
@@ -49,6 +50,24 @@ body{
   margin-top: 15px;
 }
 
+.button2
+{
+  background-color: #007BFF; 
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  transition-duration: 0.4s;
+  margin-left: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
 .button:hover {
   background-color: darkgreen;
   color: white;
@@ -57,7 +76,7 @@ body{
 
 .searchbox{
   margin-left: 20px;
-  width:200px;
+  width:45%;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -71,7 +90,7 @@ body{
 }
 
 .searchbox:focus {
-  width: 30%;
+  width: 70%;
 }
 
 .searchbutton{
@@ -101,4 +120,11 @@ body{
   margin-right: 60px;
   height:100px;
   width: 100px;
+  cursor: pointer;
+}
+
+.message {
+  color: green;
+  font-weight: bold;
+  margin: 10px 0;
 }
