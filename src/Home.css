@@ -6,7 +6,22 @@ body{
 }
 
 .book{
-  background-color: #f0f8ff;
-  height: 50%;
-  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 0px 0px;
+  gap: 40px;
+}
+
+.booklist
+{
+  background-color:rgb(252, 237, 210);
+  width:25%;
+  flex-basis: 20%;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 10px rgb(0,0,0.2);
+  margin:20px;
+  padding :10px;
+  text-align: center;
 }

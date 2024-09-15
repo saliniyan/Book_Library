@@ -10,8 +10,8 @@ function Home(){
     const a=async()=>
     {
         try{
-            const response = await axios.get(`https://openlibrary.org/search.json?q=${'harry_potter'}&limit=4&offset=${offset}`)
-            setbooks(prevbook=>[...prevbook,...response.data.docs])
+            const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=william+shakesphere&maxResults=4&startIndex=${offset}`);            
+            setbooks(prevbook=>[...prevbook,...response.data.items])
             setoffset(offset+4)
             console.log('fetched')
         }
@@ -25,9 +25,13 @@ function Home(){
         <button onClick={a}>fetch Book</button>
         <div className='book'>
             {books.map((book,index)=>(
-                <div key={index}>
-                    <h2>{book.title}</h2>
-                    <p>{book.author_name}</p>
+                <div key={index} className="booklist">
+                    <img src={book.volumeInfo.imageLinks.thumbnail} alt={`${book.volumeInfo.title} cover`} />
+                    <h3>{book.volumeInfo.title}</h3>
+                    <p>{book.volumeInfo.authors}</p>
+                    <p>Publisher: {book.volumeInfo.publisher}</p>
+                    <p>Published Date: {book.volumeInfo.publishedDate}</p>
+                    <a href={book.volumeInfo.previewLink}>click here</a>
                 </div>
             ))
             }
