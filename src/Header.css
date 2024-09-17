@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
 .head{
     color:crimson;
     text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+}
+
+.cart{
+    color: navy;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
 }

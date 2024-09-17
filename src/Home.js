@@ -4,7 +4,6 @@ import axios from "axios";
 import { useState } from "react";
 import {useNavigate } from "react-router-dom"
 
-
 function Home(){
     const [books,setBooks]=useState([])
     const [offset,setOffset]=useState(0)
@@ -15,7 +14,9 @@ function Home(){
     const fetchbook=async(e)=>
     {
         try{
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
             const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=4&startIndex=${offset}`);            
             setBooks(prevbook=>[...prevbook,...response.data.items])
             setOffset(offset+4)
@@ -30,6 +31,7 @@ function Home(){
     {
         setSearch(e.target.value);
         setOffset(0);
+        setBooks([])
     }
 
     const Additem = (book) => {
@@ -69,11 +71,11 @@ function Home(){
             <img src={"/cart.png"} alt="cart" className="cartimg" onClick={seecart}/>
         </div>
         </form>
-        {message && <div className="message">{message}</div>}
+        {message && <div className="popmessage">{message}</div>}
         <div className='book'>
             {books.map((book,index)=>(
                 <div key={index} className="booklist">
-                    <img src={book.volumeInfo.imageLinks?.thumbnail} alt={`${book.volumeInfo.title} cover`} />
+                    <img src={book.volumeInfo.imageLinks?.thumbnail} alt={`${book.volumeInfo.title} cover`} className="img1"/>
                     <h3>{book.volumeInfo.title?book.volumeInfo.title:'Title Unknown'}</h3>
                     <p>{book.volumeInfo.authors?book.volumeInfo.authors:'Authon Unknown'}</p>
                     <p>Publisher: {book.volumeInfo.publisher?book.volumeInfo.publisher:'Publisher Unknown'}</p>
