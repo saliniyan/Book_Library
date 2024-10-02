@@ -82,18 +82,32 @@ function Home(){
             const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=4&startIndex=${offset}`);            
             setBooks(prevbook=>[...prevbook,...response.data.items])
             setOffset(offset+4)
-            console.log('fetched')
         }
         catch{
             console.error("Error in fetching details")
         }
     }
 
+    const fetchbookonsearch=async(e)=>
+        {
+            try{
+                if(e){
+                    e.preventDefault();
+                }
+                setBooks([]);
+                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=4&startIndex=${offset}`);            
+                setBooks(prevbook=>[...prevbook,...response.data.items])
+                setOffset(offset+4)
+            }
+            catch{
+                console.error("Error in fetching details")
+            }
+        }
+
     const handlesearch=(e)=>
     {
         setSearch(e.target.value);
         setOffset(0);
-        setBooks([])
     }
 
     const Additem = (book) => {
@@ -120,7 +134,7 @@ function Home(){
 
     return(
         <div>
-        <form onSubmit={fetchbook}>
+        <form onSubmit={fetchbookonsearch}>
         <div className="first">
             <div>
             <input className="searchbox"

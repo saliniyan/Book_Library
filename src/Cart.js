@@ -1,18 +1,11 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import './Home.css'
 import './Header.css'
 
 function Cart() {
     const location = useLocation();
-    const [items, setItems] = useState(() => {
-        const storedItems = localStorage.getItem('items');
-        return storedItems ? JSON.parse(storedItems) : location.state?.items || [];
-    });
-
-    useEffect(() => {
-        localStorage.setItem('items', JSON.stringify(items));
-    }, [items]);
+    const [items, setItems] = useState(() => location.state?.items || []);
 
     const remove=(a)=>{
         setItems(items.filter((item) => item.title!==a))
