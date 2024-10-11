@@ -31,7 +31,7 @@ function Home(){
                 categories: ['Comics & Graphic Novels'],
                 description: 'Join Captain America, Thor, Iron Man, Black Widow, and the Guardians of the Galaxy on a stunning journey.',
                 imageLinks: {
-                    thumbnail: 'http://books.google.com/books/content?id=NgXeDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+                    thumbnail: 'C'
                 },
                 previewLink: 'https://books.google.co.in/books?id=NgXeDwAAQBAJ&printsec=frontcover&dq=Marvel&hl=&cd=2&source=gbs_api#v=onepage&q=Marvel&f=false'
             }
