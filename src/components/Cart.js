@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import './Home.css'
-import './Header.css'
 
 function Cart() {
     const location = useLocation();
@@ -12,7 +11,7 @@ function Cart() {
     }
 
     return (
-        <div>
+        <div className="home-container">
              <h1 className='cart'>View Your Cart</h1>
         <div className='book'>
             {items.map((item,index)=>(

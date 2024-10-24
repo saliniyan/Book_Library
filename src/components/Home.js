@@ -1,10 +1,19 @@
-import React from "react";
-import './Home.css'
+import {React, useState} from 'react';
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 import axios from "axios";
-import { useState} from "react";
-import {useNavigate } from "react-router-dom"
+import './Home.css'
 
-function Home(){
+const Home = () => {
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout(); // Clear authentication state
+        navigate('/'); // Redirect to login page
+    };
+
     const [books, setBooks] = useState([
         {
             id: '1',
@@ -127,13 +136,20 @@ function Home(){
         setTimeout(() => setMessage(''), 2500);
     };
     
-    const navigate=useNavigate()
     const seecart=()=>{
         navigate('/Cart',{ state: { items: item } })
     }
 
     return(
-        <div>
+        <div className="home-container">
+        <Navbar />
+        <header className="d-flex justify-content-between align-items-center mb-4">
+            <h1 className="text-primary">Welcome to Our Application!</h1>
+            <button className="btn btn-danger" onClick={handleLogout}>
+                Logout
+            </button>
+        </header>
+
         <form onSubmit={fetchbookonsearch}>
         <div className="first">
             <div>
@@ -166,6 +182,7 @@ function Home(){
             }
         </div>
         <button onClick={fetchbook} className="button1">Load Books</button>
+        <div style={{ height: '50px' }}></div>
         </div>
     )
 }
