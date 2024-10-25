@@ -160,3 +160,7 @@
       to { opacity: 0; }
   }
   
+  .profile_img{
+    height: 40px;
+    width: auto;
+  }

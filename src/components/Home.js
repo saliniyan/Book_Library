@@ -8,6 +8,11 @@ import './Home.css'
 const Home = () => {
     const { logout } = useAuth();
     const navigate = useNavigate();
+    const [showLogoutOption, setShowLogoutOption] = useState(false);
+
+    const handleImageClick = () => {
+        setShowLogoutOption(!showLogoutOption);
+      };
 
     const handleLogout = () => {
         logout(); // Clear authentication state
@@ -40,7 +45,7 @@ const Home = () => {
                 categories: ['Comics & Graphic Novels'],
                 description: 'Join Captain America, Thor, Iron Man, Black Widow, and the Guardians of the Galaxy on a stunning journey.',
                 imageLinks: {
-                    thumbnail: 'C'
+                    thumbnail: 'http://books.google.com/books/content?id=4UJoPgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
                 },
                 previewLink: 'https://books.google.co.in/books?id=NgXeDwAAQBAJ&printsec=frontcover&dq=Marvel&hl=&cd=2&source=gbs_api#v=onepage&q=Marvel&f=false'
             }
@@ -143,12 +148,45 @@ const Home = () => {
     return(
         <div className="home-container">
         <Navbar />
+        <br />
         <header className="d-flex justify-content-between align-items-center mb-4">
-            <h1 className="text-primary">Welcome to Our Application!</h1>
-            <button className="btn btn-danger" onClick={handleLogout}>
-                Logout
-            </button>
+        <h1 className="text-primary">Unleash the power of Books!</h1>
+
+        <div style={{ position: 'relative', display: 'inline-block', marginRight: '3%' }}>
+            <img
+            src="profile.png"
+            className="profile_img"
+            onClick={handleImageClick}
+            alt="Profile"
+            style={{ cursor: 'pointer' }}
+            />
+            {showLogoutOption && (
+            <div
+                style={{
+                position: 'absolute',
+                top: '100%',
+                left: '0',
+                backgroundColor: 'rgb(241, 80, 80)',
+                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                cursor: 'pointer',
+                marginTop: '5px',
+                width: '70px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+                }}
+                onClick={() => {
+                handleLogout();
+                setShowLogoutOption(false); // Hide the option after logging out
+                }}
+            >
+                <b>Logout</b>
+            </div>
+            )}
+        </div>
         </header>
+
 
         <form onSubmit={fetchbookonsearch}>
         <div className="first">
@@ -167,7 +205,11 @@ const Home = () => {
         <div className='book'>
             {books.map((book,index)=>(
                 <div key={index} className="booklist">
-                    <img src={book.volumeInfo.imageLinks?.thumbnail} alt={`${book.volumeInfo.title} cover`} className="img1"/>
+                    <img 
+                    src={book.volumeInfo.imageLinks?.thumbnail || 'public/book_default.png'} 
+                    className="img1" 
+                    alt="Book Thumbnail" 
+                    />
                     <h3>{book.volumeInfo.title?book.volumeInfo.title:'Title Unknown'}</h3>
                     <p>{book.volumeInfo.authors?book.volumeInfo.authors:'Author Unknown'}</p>
                     <p>Publisher: {book.volumeInfo.publisher?book.volumeInfo.publisher:'Publisher Unknown'}</p>
