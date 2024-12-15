@@ -166,7 +166,7 @@ const Home = () => {
                 position: 'absolute',
                 top: '100%',
                 left: '0',
-                backgroundColor: 'rgb(241, 80, 80)',
+                backgroundColor: 'rgb(255, 255, 255)',
                 boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                 cursor: 'pointer',
                 marginTop: '5px',
@@ -174,12 +174,16 @@ const Home = () => {
                 height: '40px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                borderRadius: '8px',
+                transition: 'background-color 0.3s'
                 }}
                 onClick={() => {
                 handleLogout();
                 setShowLogoutOption(false); // Hide the option after logging out
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'red')} // Change color on hover
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgb(255, 255, 255)')} // Reset color
             >
                 <b>Logout</b>
             </div>
