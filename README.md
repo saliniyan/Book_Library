@@ -1,11 +1,26 @@
-## Available Scripts
+# Book Library
 
-In the project directory, you can run:
+A web-based application for managing and exploring books using the Google Books API.
 
-### `npm start`
+## Features
+- Search for books by title, author, or keyword
+- View book details including description, author, and publication date
+- Save favorite books to a personal collection
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- **Frontend:** React.js
+- **API:** Google Books API
+- **Styling:** CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screen Shorts:
+### Login page
+![login](images/login.png)
+
+### Home page
+![home](images/home.png)
+
+### Search
+![search](images/search.png)
+
+### Cart page
+![cart](images/cart.png)
